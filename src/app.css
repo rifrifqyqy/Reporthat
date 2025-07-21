@@ -40,6 +40,24 @@
 button {
 	cursor: pointer;
 }
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: white;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #f59e0b; /* amber-500 hex */
+	border-radius: 9999px;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #f59e0b white;
+}
+
 :root {
 	--radius: 0.625rem;
 	--background: oklch(1 0 0);
