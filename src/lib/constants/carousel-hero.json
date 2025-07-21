@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"category": "Jalan Rusak",
+		"description": " Laporkan berbagai kerusakan jalan mulai dari lubang, retakan, hingga amblas yang membahayakan pengguna jalan.",
+		"img": "/images/brokenroad.png"
+	},
+	{
+		"id": 2,
+		"category": "Lampu Jalan",
+		"description": "Informasikan jika lampu jalan mati, berkedip, redup, atau menyala di siang hari untuk memastikan penerangan yang layak.",
+		"img": "/images/traffic-lights.jpg"
+	},
+	{
+		"id": 3,
+		"category": "Vandalisme",
+		"description": "Laporkan tindakan perusakan atau pencurian fasilitas umum seperti coretan, perabot rusak, atau rambu hilang yang mengganggu kenyamanan dan fungsi publik.",
+		"img": "/images/vandalism.jpg"
+	},
+	{
+		"id": 4,
+		"category": "Sampah Tercecer",
+		"description": "Beritahukan lokasi tumpukan atau sebaran sampah yang menyebabkan bau, menarik hama, atau menyumbat saluran air.",
+		"img": "/images/trash.jpg"
+	}
+]
