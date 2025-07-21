@@ -85,6 +85,8 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	event.locals.user = user;
 	const routeId = event.route.id ?? '';
 	const pathname = event.url.pathname;
+	const role = session?.user?.user_metadata?.role;
+
 	// const role = user?.user_metadata?.role;
 	// 1. Guest-only routes: /login, /register
 	if (session && ['/login', '/register'].includes(pathname)) {
@@ -95,14 +97,14 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	const isAdminRoute = routeId?.startsWith('/(admin)');
 	if (isAdminRoute) {
 		if (!session) throw redirect(303, '/login');
-		if (session?.role !== 'admin') throw redirect(303, '/error');
+		if (role !== 'admin') throw redirect(303, '/error');
 	}
 
 	// 3. User-only routes
 	const isUserRoute = routeId?.startsWith('/(app)');
 	if (isUserRoute) {
 		if (!session) throw redirect(303, '/login');
-		if (session?.role !== 'user') throw redirect(303, '/error');
+		if (role !== 'user') throw redirect(303, '/error');
 	}
 	return resolve(event);
 };

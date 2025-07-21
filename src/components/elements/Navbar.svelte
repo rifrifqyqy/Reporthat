@@ -14,7 +14,7 @@
 	let userName = $derived(user?.user_metadata.full_name);
 	let userEmail = $derived(user?.email);
 	let userProfile = $derived(user?.user_metadata.avatar_url);
-	$inspect(user);
+	// $inspect(user);
 	let openProfile = $state(false);
 
 	function toggleProfile() {
@@ -139,7 +139,9 @@
 				{/if}
 			</div>
 		{:else}
-			<Button onclick={() => goto('/login')} style="font-medium gap-4">Login</Button>
+			<Button onclick={() => goto('/login', { invalidateAll: true })} style="font-medium gap-4"
+				>Login</Button
+			>
 		{/if}
 	</div>
 </nav>

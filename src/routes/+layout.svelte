@@ -34,7 +34,9 @@
 	<main class="min-h-screen">
 		{@render children()}
 	</main>
-	<footer class="mt-8">
-		<Footer />
-	</footer>
+	{#if !hide_navbar.includes(page.url.pathname)}
+		<footer class="mt-8">
+			<Footer />
+		</footer>
+	{/if}
 </main>

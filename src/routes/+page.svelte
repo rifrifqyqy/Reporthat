@@ -259,8 +259,9 @@
 					</p>
 				{/key}
 				<div bind:this={buttonCTA}>
-					<Button onclick={() => goto('/report')} style="font-medium gap-4 mt-4 ml-auto"
-						>Let's Report</Button
+					<Button
+						onclick={() => goto('/report', { invalidateAll: true })}
+						style="font-medium gap-4 mt-4 ml-auto">Let's Report</Button
 					>
 				</div>
 			</article>
