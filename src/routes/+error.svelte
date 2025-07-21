@@ -5,7 +5,7 @@
 
 	// function to redirect to home page
 	function backToHome() {
-		goto('/cashier', { invalidateAll: true });
+		goto('/', { invalidateAll: true });
 	}
 </script>
 
