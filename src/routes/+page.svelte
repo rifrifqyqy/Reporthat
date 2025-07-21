@@ -11,9 +11,8 @@
 	import { onMount, tick } from 'svelte';
 	import { revealSplitText } from '$lib/animations/split-text';
 	import hero_images from '$lib/constants/carousel-hero.json';
-	import { fade, scale, slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import Divider from '../components/elements/Divider.svelte';
-	import Navbar from '../components/elements/Navbar.svelte';
 	import Button from '../components/elements/button/Button.svelte';
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 
