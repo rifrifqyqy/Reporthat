@@ -260,7 +260,8 @@
 				<div bind:this={buttonCTA}>
 					<Button
 						onclick={() => goto('/report', { invalidateAll: true })}
-						style="font-medium gap-4 mt-4 ml-auto">Let's Report</Button
+						style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 "
+						>Let's Report</Button
 					>
 				</div>
 			</article>
@@ -399,7 +400,7 @@
 	<!-- CTA -->
 	<section
 		bind:this={container_cta}
-		class="relative flex w-full overflow-clip rounded-2xl pt-24 pb-16"
+		class="relative flex w-full overflow-clip rounded-2xl pt-24 pb-16 shadow-2xl shadow-amber-500/60"
 	>
 		<img
 			src="/images/gradient-amber-2.jpg"
@@ -426,5 +427,9 @@
 
 	._tutorial_title {
 		@apply text-xl font-semibold text-white uppercase;
+	}
+
+	.shadow-gradient-sm {
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	}
 </style>

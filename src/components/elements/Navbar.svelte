@@ -42,7 +42,7 @@
 
 <nav
 	class="sticky top-0 z-50 flex items-center justify-between px-8 py-5 transition-all duration-300 {scrolled
-		? 'bg-white/70 shadow-xs backdrop-blur-md'
+		? 'bg-white/70  shadow-xs backdrop-blur-md'
 		: 'bg-transparent'}"
 >
 	<figure class="">
