@@ -321,7 +321,7 @@
 			{@const steps = [
 				{
 					step: 'First Step',
-					title: 'Take a Snapshoot',
+					title: 'Take a Snapshot',
 					img: '/images/capture.jpg',
 					description:
 						'Cukup foto atau rekam video kerusakan yang Anda temukan. Pastikan gambarnya jelas dan detail agar lokasi serta jenis kerusakannya mudah dikenali.'
