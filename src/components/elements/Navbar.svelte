@@ -43,7 +43,7 @@
 </script>
 
 <nav
-	class="sticky top-0 z-50 flex items-center justify-between px-4 py-2 transition-all duration-300 md:px-8 md:py-5 {scrolled
+	class="sticky top-0 z-50 flex items-center justify-between px-4 py-2 transition-all duration-300 md:px-8 md:py-4 {scrolled
 		? 'bg-white/70  shadow-xs backdrop-blur-md'
 		: 'bg-transparent'}"
 >
@@ -51,7 +51,7 @@
 		<img src="/images/reporthat-logo.png" class="h-10" alt="" />
 	</figure>
 	<div class="flex items-center gap-4 max-md:w-full max-md:justify-between">
-		<ul class="bg-light-300 flex items-center gap-4 rounded-full p-2 font-semibold">
+		<ul class="bg-light-300 flex items-center gap-4 rounded-full p-1 font-semibold md:p-2">
 			{#each menu_navbar as _}
 				<a
 					data-sveltekit-preload-data
@@ -90,7 +90,7 @@
 				{#if openProfile}
 					<div
 						transition:slide
-						class=" absolute right-0 mt-2 w-max rounded-lg border border-gray-200 bg-white p-4 shadow-xs md:min-w-sm"
+						class=" absolute right-0 mt-2 w-max rounded-lg border border-gray-200 bg-white p-3 shadow-xs md:min-w-sm md:p-4"
 					>
 						<h2 class="text-dark-700 px-2 text-xs md:text-sm">Sedang menggunakan</h2>
 						<figure class="flex gap-4 p-3">
@@ -139,7 +139,7 @@
 								onclick={() => goto('/report').then(() => (openProfile = false))}
 								style="bg-trasparent  justify-between hover:bg-light-200 max-md:text-sm rounded-lg text-dark-500 w-full"
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-5.5" viewBox="0 0 24 24"
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 md:h-5.5" viewBox="0 0 24 24"
 									><g
 										fill="none"
 										stroke="currentColor"
@@ -189,8 +189,6 @@
 <style lang="postcss">
 	@reference "../../app.css";
 
-	nav {
-	}
 	a.selected {
 		@apply bg-white text-amber-500 hover:text-amber-500;
 	}
