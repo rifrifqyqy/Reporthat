@@ -6,5 +6,5 @@
 	<figure class=" text-gray-800">
 		{@render icon()}
 	</figure>
-	<p class="font-semibold uppercase">{@render text()}</p>
+	<p class="font-semibold uppercase max-md:text-sm">{@render text()}</p>
 </li>

@@ -26,3 +26,18 @@ export async function POST({ request }) {
 		);
 	}
 }
+export async function GET() {
+	try {
+		const reports = await prisma.reports.findMany({
+			orderBy: { created_at: 'desc' } // opsional: urutkan dari terbaru
+		});
+
+		return json({ success: true, reports });
+	} catch (error) {
+		console.error('Gagal mengambil laporan:', error);
+		return json(
+			{ success: false, message: 'Terjadi kesalahan saat mengambil laporan.' },
+			{ status: 500 }
+		);
+	}
+}

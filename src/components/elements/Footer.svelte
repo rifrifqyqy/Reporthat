@@ -39,6 +39,6 @@
 <footer
 	class="border-light-300 flex items-center justify-between overflow-hidden border-t px-8 py-4"
 >
-	<img bind:this={logo} src="/images/reporthat-logo.png" class="h-8" alt="" />
+	<img bind:this={logo} src="/images/reporthat-logo.png" class="h-6 md:h-8" alt="" />
 	<p bind:this={copyright} class=" text-xs md:text-sm">© 2025 Reporthat. All rights reserved</p>
 </footer>

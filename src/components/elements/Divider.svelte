@@ -39,8 +39,8 @@
 	});
 </script>
 
-<div class="my-12 flex w-full items-center justify-center gap-12">
+<div class="my-8 flex w-full items-center justify-center gap-12 md:my-12">
 	<span bind:this={lineLeft} class="bg-light-600 h-0.5 w-32 rounded-full"></span>
-	<img bind:this={logoEl} src="/images/logo.png" class="h-12" alt="" />
+	<img bind:this={logoEl} src="/images/logo.png" class="h-10 md:h-12" alt="" />
 	<span bind:this={lineRight} class="bg-light-600 h-0.5 w-32 rounded-full"></span>
 </div>

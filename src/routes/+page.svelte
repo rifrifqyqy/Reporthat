@@ -210,12 +210,12 @@
 	});
 </script>
 
-<main class="space-y-24 md:px-8">
+<main class="space-y-16 overflow-hidden px-4 md:space-y-24 md:px-8 md:pb-16">
 	<!-- Hero Section -->
-	<div class="hero-container grid grid-cols-2 gap-8 overflow-clip">
+	<div class="hero-container grid gap-8 overflow-hidden md:grid-cols-2">
 		<section
 			bind:this={left_container}
-			class="relative flex h-150 w-full flex-col justify-between overflow-clip rounded-2xl"
+			class="relative flex h-90 w-full flex-col justify-between overflow-hidden rounded-2xl md:h-150"
 		>
 			<!-- Gambar di belakang -->
 			{#key heroActive.img}
@@ -229,15 +229,17 @@
 
 			<!-- Overlay opsional biar teks lebih jelas -->
 			<div class="absolute inset-0 z-5 bg-black/50"></div>
-			<ul class="relative z-10 m-4 ml-auto flex items-center gap-4">
+			<ul
+				class="relative z-10 m-4 ml-auto flex flex-wrap items-center gap-2 max-md:justify-end md:gap-4"
+			>
 				{#each hero_images as _, index}
 					<button
 						bind:this={buttonEls[index]}
 						data-sveltekit-preload-code="hover"
 						data-sveltekit-preload-data="hover"
 						onclick={() => (currentIndex = index)}
-						class="flex items-center gap-4
-						 rounded-full border border-white px-4 py-2 text-sm text-white backdrop-blur-xs transition-normal active:bg-white/50 {currentIndex ===
+						class="flex items-center gap-2 rounded-full
+						 border border-white px-2 py-1 text-sm text-white backdrop-blur-xs transition-normal active:bg-white/50 md:gap-4 md:px-4 md:py-2 {currentIndex ===
 						index
 							? 'bg-white/40'
 							: 'bg-white/20'}"
@@ -246,31 +248,37 @@
 				{/each}
 			</ul>
 			<!-- Teks di depan -->
-			<article class="relative z-10 mt-auto p-8 text-white">
+			<article class="relative z-10 mt-auto p-4 text-white md:p-8">
 				{#key heroActive.category}
-					<h1 transition:slide bind:this={title_animation} class="mb-4 text-5xl font-medium">
+					<h1
+						transition:slide
+						bind:this={title_animation}
+						class="mb-2 text-3xl font-medium md:mb-4 md:text-5xl"
+					>
 						{heroActive.category}
 					</h1>
 				{/key}
 				{#key heroActive.description}
-					<p class="text-light-600" transition:slide bind:this={text_animation}>
+					<p class="text-light-600 max-md:text-sm" transition:slide bind:this={text_animation}>
 						{heroActive.description}
 					</p>
 				{/key}
 				<div bind:this={buttonCTA}>
 					<Button
 						onclick={() => goto('/report', { invalidateAll: true })}
-						style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 "
+						style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 max-md:text-sm "
 						>Let's Report</Button
 					>
 				</div>
 			</article>
 		</section>
 
-		<section class="bg-light-200 flex h-full flex-col justify-between rounded-2xl p-6">
+		<section
+			class="bg-light-200 flex h-full flex-col justify-between rounded-2xl p-3 max-md:gap-8 md:p-6"
+		>
 			<div>
 				<h2
-					class="max-w-lg overflow-hidden text-5xl leading-[120%] font-medium"
+					class="max-w-lg overflow-hidden text-3xl leading-[120%] font-medium md:text-5xl"
 					bind:this={title_hero}
 				>
 					Laporkan <span class="text-amber-500">kerusakan</span> lingkungan, semudah
@@ -335,7 +343,7 @@
 				},
 				{
 					step: 'You Got it!',
-					title: 'Processed!',
+					title: 'Resolved!',
 					img: '/images/fixed.jpg',
 					description:
 						'Tim kami akan segera meninjau dan menindaklanjuti informasi yang Anda berikan untuk memastikan penanganan yang tepat.'
@@ -347,18 +355,18 @@
 					<figure bind:this={cards[index]} class="group relative h-fit rounded-2xl">
 						<img
 							src={_.img}
-							class=" h-120 w-full rounded-xl object-cover brightness-70 transition-all duration-500 group-hover:brightness-40"
+							class="h-60 w-full rounded-xl object-cover brightness-70 transition-all duration-500 group-hover:brightness-40 md:h-120"
 							alt=""
 						/>
 						<div
-							class="border-light-200 absolute top-4 right-4 rounded-full border bg-white/30 px-4 py-2 text-white backdrop-blur-xs"
+							class="border-light-200 absolute top-4 right-4 rounded-full border bg-white/30 px-2 py-1 text-white backdrop-blur-xs max-md:text-sm md:px-4 md:py-2"
 						>
 							{_.step}
 						</div>
 						<article class="absolute bottom-4 left-4">
 							<h2 class="_tutorial_title">{_.title}</h2>
 							<p
-								class="text-light-500 max-h-0 overflow-hidden pr-4 transition-[max-height] duration-600 ease-in-out group-hover:max-h-[500px]"
+								class="text-light-500 max-h-0 overflow-hidden pr-4 transition-[max-height] duration-600 ease-in-out group-hover:max-h-[500px] max-md:text-sm"
 							>
 								{_.description}
 							</p>
@@ -367,15 +375,18 @@
 				{/key}
 			{/each}
 		{/snippet}
-		<div class="grid grid-cols-3 gap-16">
+		<div class="grid gap-8 md:grid-cols-3 md:gap-16">
 			<article>
-				<h2 bind:this={steps_title} class=" text-start text-4xl leading-snug font-semibold">
+				<h2
+					bind:this={steps_title}
+					class=" text-start text-2xl leading-snug font-semibold md:text-4xl"
+				>
 					Bagaimana anda melakukan <span class="rounded-full bg-amber-500 px-4 text-white"
 						>laporan</span
 					> kerusakan fasilitas?
 				</h2>
 			</article>
-			<div class="col-span-2 grid grid-cols-3 gap-4">
+			<div class="grid gap-4 md:col-span-2 md:grid-cols-3">
 				{@render steps()}
 			</div>
 		</div>
@@ -383,10 +394,10 @@
 
 	<Divider />
 	<!-- Quotes Section -->
-	<section class="my-24 flex justify-center">
+	<section class="my-12 flex justify-center md:my-24">
 		<h1
 			bind:this={quotes}
-			class="font-inter text-dark-500 max-w-[calc(100%-8rem)] text-center leading-snug font-semibold tracking-wider md:text-5xl"
+			class="font-inter text-dark-500 max-w-[calc(100%-2rem)] text-center text-2xl leading-snug font-semibold tracking-wider md:max-w-[calc(100%-8rem)] md:text-5xl"
 		>
 			Melihat kerusakan adalah satu hal, namun mengambil tindakan untuk <span class="text-amber-500"
 				>melaporkannya</span
@@ -400,7 +411,7 @@
 	<!-- CTA -->
 	<section
 		bind:this={container_cta}
-		class="relative flex w-full overflow-clip rounded-2xl pt-24 pb-16 shadow-2xl shadow-amber-500/60"
+		class="relative flex w-full overflow-clip rounded-2xl pt-5 pb-5 shadow-2xl shadow-amber-500/60 md:pt-24 md:pb-16"
 	>
 		<img
 			src="/images/gradient-amber-2.jpg"
@@ -410,13 +421,13 @@
 		<article class="relative m-auto flex flex-col items-center">
 			<h2
 				bind:this={cta_title}
-				class=" max-w-[calc(100%-12rem)] text-center text-4xl leading-snug font-semibold text-white"
+				class="max-w-[calc(100%-2rem)] text-center text-lg leading-snug text-white md:max-w-[calc(100%-12rem)] md:text-4xl md:font-semibold"
 			>
 				Sumbangkan kepedulian Anda, laporkan masalah fasilitas, bantu bangun lingkungan yang lebih
 				baik!
 			</h2>
 			<div bind:this={cta_button}>
-				<Button style="font-medium mt-8 bg-dark-300">Let's Report</Button>
+				<Button style="font-medium max-md:text-xs mt-8 bg-dark-300">Let's Report</Button>
 			</div>
 		</article>
 	</section>
@@ -426,7 +437,7 @@
 	@reference "../app.css";
 
 	._tutorial_title {
-		@apply text-xl font-semibold text-white uppercase;
+		@apply text-base font-semibold text-white uppercase md:text-xl;
 	}
 
 	.shadow-gradient-sm {
