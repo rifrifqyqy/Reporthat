@@ -5,7 +5,8 @@
 	import Upload from '../components/elements/icons/Upload.svelte';
 	import LabelHero from '../components/elements/label/LabelHero.svelte';
 	import { gsap } from 'gsap';
-
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { SplitText } from 'gsap/SplitText';
 	import { animateIn } from '$lib/animations/animate-in';
 	import { onMount, tick } from 'svelte';
 	import { revealSplitText } from '$lib/animations/split-text';
@@ -13,12 +14,13 @@
 	import { fade, slide } from 'svelte/transition';
 	import Divider from '../components/elements/Divider.svelte';
 	import Button from '../components/elements/button/Button.svelte';
-
+	gsap.registerPlugin(ScrollTrigger, SplitText);
 	// gsap state
 	let title_hero: any;
 	let label_gsap: any;
 	let label_gsap2: any;
 	let label_gsap3: any;
+
 	$effect(() => {
 		let split = new SplitText(title_hero, {
 			type: 'chars, words, lines',
@@ -35,9 +37,6 @@
 		});
 	});
 	onMount(async () => {
-		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-		const { SplitText } = await import('gsap/SplitText');
-		gsap.registerPlugin(ScrollTrigger, SplitText);
 		await tick();
 
 		const elements = [label_gsap, label_gsap2, label_gsap3].filter(Boolean);
@@ -134,7 +133,7 @@
 	});
 
 	let quotes: any;
-	onMount(() => {
+	onMount(async () => {
 		const split = new SplitText(quotes, {
 			type: 'chars, words'
 		});
@@ -156,7 +155,7 @@
 	let container_cta: any;
 	let cta_title: any;
 	let cta_button: any;
-	onMount(() => {
+	onMount(async () => {
 		const split = new SplitText(cta_title, { type: 'words', mask: 'words' });
 
 		const tl = gsap.timeline({
