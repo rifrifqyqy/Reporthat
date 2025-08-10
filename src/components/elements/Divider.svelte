@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	gsap.registerPlugin(ScrollTrigger);
+
 	let logoEl: HTMLElement;
 	let lineLeft: HTMLElement;
 	let lineRight: HTMLElement;
 
-	onMount(() => {
+	onMount(async () => {
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		gsap.registerPlugin(ScrollTrigger);
 		gsap.set(lineLeft, { transformOrigin: 'right center', scaleX: 0 });
 		gsap.set(lineRight, { transformOrigin: 'left center', scaleX: 0 });
 		gsap.set(logoEl, { scale: 0, opacity: 0 });

@@ -5,8 +5,7 @@
 	import Upload from '../components/elements/icons/Upload.svelte';
 	import LabelHero from '../components/elements/label/LabelHero.svelte';
 	import { gsap } from 'gsap';
-	import { SplitText } from 'gsap/SplitText';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 	import { animateIn } from '$lib/animations/animate-in';
 	import { onMount, tick } from 'svelte';
 	import { revealSplitText } from '$lib/animations/split-text';
@@ -14,7 +13,6 @@
 	import { fade, slide } from 'svelte/transition';
 	import Divider from '../components/elements/Divider.svelte';
 	import Button from '../components/elements/button/Button.svelte';
-	gsap.registerPlugin(ScrollTrigger, SplitText);
 
 	// gsap state
 	let title_hero: any;
@@ -37,6 +35,9 @@
 		});
 	});
 	onMount(async () => {
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		const { SplitText } = await import('gsap/SplitText');
+		gsap.registerPlugin(ScrollTrigger, SplitText);
 		await tick();
 
 		const elements = [label_gsap, label_gsap2, label_gsap3].filter(Boolean);

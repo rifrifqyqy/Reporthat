@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	gsap.registerPlugin(ScrollTrigger);
 
 	let logo: HTMLElement;
 	let copyright: HTMLElement;
 
-	onMount(() => {
+	onMount(async () => {
+		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+		gsap.registerPlugin(ScrollTrigger);
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: logo.parentElement,
