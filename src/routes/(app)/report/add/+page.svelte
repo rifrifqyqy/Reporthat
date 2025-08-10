@@ -241,7 +241,7 @@
 
 <main class="space-y-8">
 	<Breadcrumb.Root>
-		<Breadcrumb.List>
+		<Breadcrumb.List class="max-md:text-xs">
 			<Breadcrumb.Item>
 				<Breadcrumb.Link href="/">Home</Breadcrumb.Link>
 			</Breadcrumb.Item>
@@ -251,15 +251,16 @@
 			</Breadcrumb.Item>
 			<Breadcrumb.Separator />
 			<Breadcrumb.Item>
-				<Breadcrumb.Page>Report</Breadcrumb.Page>
+				<Breadcrumb.Page class="text-amber-600 max-md:text-xs">Report</Breadcrumb.Page>
 			</Breadcrumb.Item>
 		</Breadcrumb.List>
 	</Breadcrumb.Root>
 
-	<form onsubmit={handleSubmit} class="mx-auto my-8 max-w-5xl space-y-6 rounded-lg bg-white">
-		<h2 class="mb-6 text-xl font-bold text-gray-800 md:text-center md:text-3xl">
-			Form Laporan Baru
-		</h2>
+	<form
+		onsubmit={handleSubmit}
+		class="my-8 space-y-6 rounded-lg bg-white max-md:mx-auto max-md:max-w-5xl"
+	>
+		<h2 class="mb-6 text-xl font-bold text-gray-800 md:text-3xl">Form Laporan Baru</h2>
 
 		<!-- Title Field -->
 		<div>
@@ -409,7 +410,7 @@
 		<button
 			type="submit"
 			disabled={!isFormValid || isSubmitting}
-			class="w-full transform rounded-md px-6 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none md:text-lg {isFormValid &&
+			class="w-full transform rounded-md px-6 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none md:text-base {isFormValid &&
 			!isSubmitting
 				? 'bg-amber-600 hover:scale-105 hover:bg-amber-700'
 				: 'cursor-not-allowed bg-gray-400'}"
