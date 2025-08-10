@@ -90,7 +90,7 @@
 				{#if openProfile}
 					<div
 						transition:slide
-						class=" absolute right-0 mt-2 w-max min-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow-xs"
+						class=" absolute right-0 mt-2 w-max rounded-lg border border-gray-200 bg-white p-4 shadow-xs md:min-w-sm"
 					>
 						<h2 class="text-dark-700 px-2 text-xs md:text-sm">Sedang menggunakan</h2>
 						<figure class="flex gap-4 p-3">

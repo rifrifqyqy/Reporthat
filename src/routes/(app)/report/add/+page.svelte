@@ -256,11 +256,10 @@
 		</Breadcrumb.List>
 	</Breadcrumb.Root>
 
-	<form
-		onsubmit={handleSubmit}
-		class="mx-auto my-8 max-w-5xl space-y-6 rounded-lg bg-white p-6 shadow-xl"
-	>
-		<h2 class="mb-6 text-center text-3xl font-bold text-gray-800">Form Laporan Baru</h2>
+	<form onsubmit={handleSubmit} class="mx-auto my-8 max-w-5xl space-y-6 rounded-lg bg-white">
+		<h2 class="mb-6 text-xl font-bold text-gray-800 md:text-center md:text-3xl">
+			Form Laporan Baru
+		</h2>
 
 		<!-- Title Field -->
 		<div>
@@ -272,7 +271,7 @@
 				type="text"
 				id="title"
 				onblur={handleTitleBlur}
-				class="w-full rounded-md border px-4 py-2 transition duration-200 ease-in-out focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none {titleErrors.length >
+				class="w-full rounded-md border px-4 py-2 transition duration-200 ease-in-out focus:border-transparent focus:ring-2 focus:ring-amber-500 focus:outline-none {titleErrors.length >
 				0
 					? 'border-red-300 bg-red-50'
 					: 'border-gray-300'}"
@@ -301,7 +300,7 @@
 				id="description"
 				rows="4"
 				onblur={handleDescriptionBlur}
-				class="w-full resize-y rounded-md border px-4 py-2 transition duration-200 ease-in-out focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none {descriptionErrors.length >
+				class="w-full resize-y rounded-md border px-4 py-2 transition duration-200 ease-in-out focus:border-transparent focus:ring-2 focus:ring-amber-500 focus:outline-none {descriptionErrors.length >
 				0
 					? 'border-red-300 bg-red-50'
 					: 'border-gray-300'}"
@@ -328,7 +327,7 @@
 
 			<div class="flex items-center space-x-4">
 				<label
-					class="cursor-pointer rounded-md border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 transition duration-200 ease-in-out hover:bg-blue-100 {files.length >=
+					class="cursor-pointer rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-700 transition duration-200 ease-in-out hover:bg-amber-100 {files.length >=
 					5
 						? 'cursor-not-allowed opacity-50'
 						: ''}"
@@ -400,7 +399,7 @@
 				</div>
 			{/if}
 			<p class="mt-2 text-sm text-gray-600">
-				Koordinat: <span class="font-semibold text-blue-600"
+				Koordinat: <span class="font-semibold text-amber-600"
 					>Lat: {location.lat.toFixed(6)}, Lng: {location.lng.toFixed(6)}</span
 				>
 			</p>
@@ -410,9 +409,9 @@
 		<button
 			type="submit"
 			disabled={!isFormValid || isSubmitting}
-			class="w-full transform rounded-md px-6 py-3 text-lg font-semibold text-white transition duration-200 ease-in-out focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none {isFormValid &&
+			class="w-full transform rounded-md px-6 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none md:text-lg {isFormValid &&
 			!isSubmitting
-				? 'bg-blue-600 hover:scale-105 hover:bg-blue-700'
+				? 'bg-amber-600 hover:scale-105 hover:bg-amber-700'
 				: 'cursor-not-allowed bg-gray-400'}"
 		>
 			{#if isSubmitting}
