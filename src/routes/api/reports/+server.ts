@@ -29,7 +29,14 @@ export async function POST({ request }) {
 export async function GET() {
 	try {
 		const reports = await prisma.reports.findMany({
-			orderBy: { created_at: 'desc' } // opsional: urutkan dari terbaru
+			orderBy: { created_at: 'desc' }, // opsional: urutkan dari terbaru
+			include: {
+				users: {
+					select: {
+						raw_user_meta_data: true
+					}
+				}
+			}
 		});
 
 		return json({ success: true, reports });
