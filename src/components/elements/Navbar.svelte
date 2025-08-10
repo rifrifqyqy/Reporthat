@@ -121,6 +121,20 @@
 						</figure>
 						<div class="mt-4">
 							<h2 class="text-dark-700 mb-2 px-2 text-xs md:text-sm">Options</h2>
+							{#if userRole === 'admin'}
+								<Button
+									onclick={() => goto('/dashboard').then(() => (openProfile = false))}
+									style="bg-trasparent items-center justify-between hover:bg-light-200 max-md:text-sm rounded-lg text-dark-500 w-full"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 md:h-5.5" viewBox="0 0 24 24"
+										><path
+											fill="currentColor"
+											d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1m0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1m10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1M13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1"
+										/></svg
+									>
+									Dashboard
+								</Button>
+							{/if}
 							<Button
 								onclick={() => goto('/report').then(() => (openProfile = false))}
 								style="bg-trasparent  justify-between hover:bg-light-200 max-md:text-sm rounded-lg text-dark-500 w-full"

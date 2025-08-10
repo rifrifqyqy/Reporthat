@@ -93,6 +93,12 @@
 			> Buat Laporan</Button
 		>
 	</div>
+	{#if data.reports.length === 0}
+		<figure class="mt-16 flex flex-col items-center gap-2">
+			<img src="/images/nodata.png" class="aspect-auto h-24 md:h-42" alt="" />
+			<p class="text-center text-gray-500">Tidak ada laporan ditemukan.</p>
+		</figure>
+	{/if}
 	<section class="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 		{#each data.reports as _}
 			<div
