@@ -43,6 +43,40 @@
 			console.error('Fetch error:', error);
 		}
 	}
+
+	async function deleteReport(reportId: string) {
+		if (
+			!window.confirm(
+				'Apakah Anda yakin ingin menghapus laporan ini? Tindakan ini tidak dapat dibatalkan.'
+			)
+		) {
+			return;
+		}
+
+		const originalReports = [...reports];
+
+		reports = reports.filter((r: any) => r.id !== reportId);
+
+		try {
+			const response = await fetch(`/api/reports/${reportId}`, {
+				method: 'DELETE'
+			});
+
+			const result = await response.json();
+
+			if (!result.success) {
+				reports = originalReports;
+				alert(`Gagal menghapus laporan: ${result.message}`);
+			} else {
+				console.log('Laporan berhasil dihapus');
+			}
+		} catch (error) {
+			reports = originalReports;
+			alert('Terjadi kesalahan koneksi saat menghapus laporan.');
+			console.error('Fetch error:', error);
+		}
+	}
+
 	async function reportsData() {
 		const response = await fetch('/api/reports');
 		if (!response.ok) throw new Error('Gagal fetch data');
@@ -124,7 +158,7 @@
 					Loading...
 				</p>
 			{:then _}
-				{#each _ as report (report.id)}
+				{#each reports as report (report.id)}
 					<ul
 						class="grid grid-cols-9 items-center gap-4 rounded-lg border border-gray-300 bg-gray-100 px-4 py-2 text-sm md:py-3"
 					>
@@ -168,10 +202,14 @@
 							</div>
 						</li>
 						<li>{new Date(report.created_at).toLocaleDateString()}</li>
-						<li class="">
+
+						<li class="flex items-center space-x-4">
 							<button class="text-blue-600 underline" onclick={() => openModal(report)}
 								>Detail</button
 							>
+							<button onclick={() => deleteReport(report.id)} class="text-red-600 underline">
+								Delete
+							</button>
 						</li>
 					</ul>
 				{/each}
