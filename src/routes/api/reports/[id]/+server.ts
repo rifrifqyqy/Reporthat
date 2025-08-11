@@ -36,3 +36,24 @@ export async function PUT({ params, request }) {
 		);
 	}
 }
+
+export async function DELETE({ params }) {
+	try {
+		const { id } = params;
+
+		await prisma.reports.delete({
+			where: {
+				id: id
+			}
+		});
+
+		return json({ success: true, message: 'Laporan berhasil dihapus.' }, { status: 200 });
+	} catch (error) {
+		console.error('Gagal menghapus laporan:', error);
+		return json(
+			{ success: false, message: 'Laporan tidak ditemukan atau terjadi kesalahan server.' },
+			{ status: 500 }
+		);
+	}
+}
+
