@@ -135,24 +135,26 @@
 									Dashboard
 								</Button>
 							{/if}
-							<Button
-								onclick={() => goto('/report').then(() => (openProfile = false))}
-								style="bg-trasparent  justify-between hover:bg-light-200 max-md:text-sm rounded-lg text-dark-500 w-full"
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 md:h-5.5" viewBox="0 0 24 24"
-									><g
-										fill="none"
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										><path d="M13 17a4 4 0 1 0 8 0a4 4 0 1 0-8 0" /><path
-											d="M17 13v4h4M12 3v4a1 1 0 0 0 1 1h4"
-										/><path d="M11.5 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v2m0 3v4" /></g
-									></svg
+							{#if userRole !== 'admin'}
+								<Button
+									onclick={() => goto('/report').then(() => (openProfile = false))}
+									style="bg-trasparent  justify-between hover:bg-light-200 max-md:text-sm rounded-lg text-dark-500 w-full"
 								>
-								Laporan Anda
-							</Button>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 md:h-5.5" viewBox="0 0 24 24"
+										><g
+											fill="none"
+											stroke="currentColor"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											><path d="M13 17a4 4 0 1 0 8 0a4 4 0 1 0-8 0" /><path
+												d="M17 13v4h4M12 3v4a1 1 0 0 0 1 1h4"
+											/><path d="M11.5 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v2m0 3v4" /></g
+										></svg
+									>
+									Laporan Anda
+								</Button>
+							{/if}
 							<AlertDialog.Root>
 								<AlertDialog.Trigger
 									class="flex w-full items-center justify-between rounded-lg px-4 py-2 text-red-400 hover:bg-red-100 max-md:text-sm"

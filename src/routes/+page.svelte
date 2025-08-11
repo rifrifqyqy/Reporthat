@@ -14,6 +14,10 @@
 	import { fade, slide } from 'svelte/transition';
 	import Divider from '../components/elements/Divider.svelte';
 	import Button from '../components/elements/button/Button.svelte';
+	import { getUserState } from '$lib/state/user-state.svelte';
+	let userContext = getUserState();
+	let { user } = $derived(userContext);
+	let userRole = $derived(user?.user_metadata.role);
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 	// gsap state
 	let title_hero: any;
@@ -264,11 +268,25 @@
 					</p>
 				{/key}
 				<div bind:this={buttonCTA}>
-					<Button
-						onclick={() => goto('/report', { invalidateAll: true })}
-						style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 max-md:text-sm "
-						>Let's Report</Button
-					>
+					{#if userRole === 'admin'}
+						<Button
+							onclick={() => goto('/dashboard', { invalidateAll: true })}
+							style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 max-md:text-sm "
+							>Halo Atmin</Button
+						>
+					{:else if userRole === 'user' || null}
+						<Button
+							onclick={() => goto('/report', { invalidateAll: true })}
+							style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 max-md:text-sm "
+							>Let's Report</Button
+						>
+					{:else if !userRole}
+						<Button
+							onclick={() => goto('/login', { invalidateAll: true })}
+							style="font-medium gap-4 mt-4 ml-auto bg-gradient-to-r from-amber-500 to-60% to-amber-600 max-md:text-sm "
+							>Let's Report</Button
+						>
+					{/if}
 				</div>
 			</article>
 		</section>
@@ -427,7 +445,22 @@
 				baik!
 			</h2>
 			<div bind:this={cta_button}>
-				<Button style="font-medium max-md:text-xs mt-8 bg-dark-300">Let's Report</Button>
+				{#if userRole === 'admin'}
+					<Button
+						onclick={() => goto('/dashboard', { invalidateAll: true })}
+						style="font-medium max-md:text-xs mt-8 bg-dark-300">Halo Atmin</Button
+					>
+				{:else if userRole === 'user'}
+					<Button
+						onclick={() => goto('/report', { invalidateAll: true })}
+						style="font-medium max-md:text-xs mt-8 bg-dark-300">Let's Report</Button
+					>
+				{:else if !userRole}
+					<Button
+						onclick={() => goto('/login', { invalidateAll: true })}
+						style="font-medium max-md:text-xs mt-8 bg-dark-300">Let's Report</Button
+					>
+				{/if}
 			</div>
 		</article>
 	</section>
