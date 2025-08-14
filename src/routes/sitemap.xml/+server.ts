@@ -1,28 +1,25 @@
-// src/routes/sitemap.xml/+server.ts
 export async function GET() {
-	// Bisa mengambil URL dinamis dari database/API
-	const staticUrls = [
+	// Gunakan URL absolut dari request untuk memastikan domain yang benar
+	const baseUrl = 'https://reporthat.vercel.app';
+
+	const urls = [
 		{
-			url: 'https://reporthat.vercel.app/',
+			url: `${baseUrl}/`,
 			changefreq: 'daily',
 			priority: '1.0',
-			lastmod: new Date().toISOString()
+			lastmod: new Date().toISOString().split('T')[0] // YYYY-MM-DD format
 		},
 		{
-			url: 'https://reporthat.vercel.app/about',
+			url: `${baseUrl}/about`,
 			changefreq: 'monthly',
 			priority: '0.8',
-			lastmod: new Date('2024-01-01').toISOString()
+			lastmod: new Date().toISOString().split('T')[0]
 		}
 	];
 
-	// Contoh mengambil URL dinamis (misalnya dari blog posts)
-	// const dynamicUrls = await getDynamicUrls();
-	// const allUrls = [...staticUrls, ...dynamicUrls];
-
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticUrls
+${urls
 	.map(
 		(item) => `  <url>
     <loc>${item.url}</loc>
@@ -35,20 +32,14 @@ ${staticUrls
 </urlset>`;
 
 	return new Response(sitemap, {
+		status: 200,
 		headers: {
-			'Content-Type': 'application/xml',
-			'Cache-Control': 'max-age=3600' // Cache selama 1 jam
+			'Content-Type': 'application/xml; charset=utf-8',
+			'Cache-Control': 'max-age=3600, s-maxage=3600',
+			'X-Robots-Tag': 'noindex' // Sitemap tidak perlu diindex
 		}
 	});
 }
 
-// Fungsi helper untuk URL dinamis (opsional)
-// async function getDynamicUrls() {
-//   const posts = await fetchBlogPosts();
-//   return posts.map(post => ({
-//     url: `https://reporthat.vercel.app/blog/${post.slug}`,
-//     changefreq: 'weekly',
-//     priority: '0.6',
-//     lastmod: post.updatedAt
-//   }));
-// }
+// Export untuk prerendering (opsional tapi direkomendasikan)
+export const prerender = true;
