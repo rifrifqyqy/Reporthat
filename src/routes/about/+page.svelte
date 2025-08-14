@@ -15,6 +15,16 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Reporthat - About</title>
+	<meta
+		name="description"
+		content="Reporthat adalah platform digital yang memudahkan warga untuk melaporkan kerusakan fasilitas
+				dan layanan publik di lingkungan sekitar mereka, demi mendorong perbaikan dan pembangunan
+				komunitas yang lebih baik."
+	/>
+</svelte:head>
+
 <section class="font-inter min-h-screen bg-white px-6 py-24 text-gray-900 md:px-16">
 	<div class="mx-auto max-w-5xl space-y-16">
 		<!-- Hero Section -->

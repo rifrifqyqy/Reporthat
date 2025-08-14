@@ -214,6 +214,15 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Reporthat | Home</title>
+	<meta
+		name="description"
+		content="Reporthat adalah platform digital yang memudahkan warga untuk melaporkan kerusakan fasilitas
+				dan layanan publik di lingkungan sekitar mereka, demi mendorong perbaikan dan pembangunan
+				komunitas yang lebih baik."
+	/>
+</svelte:head>
 <main class="space-y-16 overflow-hidden px-4 md:space-y-24 md:px-8 md:pb-16">
 	<!-- Hero Section -->
 	<div class="hero-container grid gap-8 overflow-hidden md:grid-cols-2">

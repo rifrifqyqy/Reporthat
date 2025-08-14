@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { type Handle, redirect } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
-
+// import * as amp from '@sveltejs/amp';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 const supabase: Handle = async ({ event, resolve }) => {
@@ -109,4 +109,14 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
+// const seoTransformHandle: Handle = async ({ event, resolve }) => {
+// 	let buffer = '';
+
+// 	return await resolve(event, {
+// 		transformPageChunk: ({ html, done }) => {
+// 			buffer += html;
+// 			if (done) return amp.transform(buffer);
+// 		}
+// 	});
+// };
 export const handle: Handle = sequence(supabase, authGuard);

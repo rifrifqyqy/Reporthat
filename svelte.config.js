@@ -8,6 +8,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
+		inlineStyleThreshold: Infinity,
 		adapter: adapter(),
 		alias: {
 			'@/*': './path/to/lib/*'
