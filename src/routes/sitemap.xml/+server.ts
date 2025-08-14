@@ -1,9 +1,5 @@
 export async function GET() {
-	const urls = [
-		'https://reporthat.vercel.app/',
-		'https://reporthat.vercel.app/about',
-		'https://reporthat.vercel.app/contact'
-	];
+	const urls = ['https://reporthat.vercel.app/', 'https://reporthat.vercel.app/about'];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
