@@ -109,16 +109,6 @@
 				</li>
 			</ul>
 		</div>
-
-		<!-- CTA -->
-		<div class="pt-12 text-center">
-			<a
-				href="/contact"
-				class="inline-block rounded-full bg-amber-500 px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-amber-600"
-			>
-				Let’s Build Something Brilliant
-			</a>
-		</div>
 	</div>
 </section>
 

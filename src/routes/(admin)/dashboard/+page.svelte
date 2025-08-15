@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index';
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { formatTanggal } from '$lib/utils/formatDatetime';
 	const { data } = $props<{ data: PageData }>();
 
@@ -112,7 +112,13 @@
 		lng: number;
 	} | null = $state(null);
 	// $inspect(selectedReport);
-
+	let selectedImage = $state<string | null>('');
+	function openImage(image: string) {
+		selectedImage = image;
+	}
+	function closeImage() {
+		selectedImage = null;
+	}
 	function openModal(report: any) {
 		selectedReport = report;
 	}
@@ -263,10 +269,34 @@
 							<h2 class="text-sm text-gray-500">Rincian Foto</h2>
 							<figure class="grid grid-cols-2 gap-4 md:grid-cols-4">
 								{#each selectedReport.images as img}
-									<img src={img} class="h-24 w-full rounded-sm object-cover" alt="" />
+									<button onclick={() => openImage(img)}>
+										<img src={img} class="h-24 w-full rounded-sm object-cover" alt="" />
+									</button>
 								{/each}
+								{#if selectedImage}
+									<div
+										class="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+										onclick={closeImage}
+									>
+										<div class="relative w-full max-w-3xl p-4" onclick={(e) => e.stopPropagation()}>
+											<button
+												class="absolute top-2 right-2 text-xl text-white hover:text-gray-300"
+												onclick={closeImage}
+											>
+												✕
+											</button>
+											<img
+												transition:fade={{ duration: 200 }}
+												src={selectedImage}
+												alt="Preview"
+												class="max-h-[80vh] w-full rounded-lg object-contain"
+											/>
+										</div>
+									</div>
+								{/if}
 							</figure>
 						</footer>
+
 						<footer class="mt-4 space-y-2">
 							<div class="flex items-center justify-between">
 								<h2 class="text-sm text-gray-500">Lokasi</h2>
